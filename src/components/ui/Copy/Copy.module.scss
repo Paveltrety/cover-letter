@@ -1,0 +1,12 @@
+@use '@/styles/vars' as *;
+
+.button {
+  border: none;
+  background: transparent;
+}
+
+.copyIcon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}

@@ -1,0 +1,18 @@
+@use '@/styles/vars' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.description {
+  font-size: 18px;
+  line-height: 26px;
+}
