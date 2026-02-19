@@ -1,3 +1,5 @@
+@use '@/styles/vars' as *;
+
 .form {
   display: flex;
   flex-direction: column;
@@ -12,4 +14,8 @@
 .contactInputs {
   display: flex;
   gap: 16px;
+
+  @media (max-width: $md) {
+    flex-direction: column;
+  }
 }
