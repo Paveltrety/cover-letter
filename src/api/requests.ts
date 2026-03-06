@@ -1,17 +1,22 @@
 import { api } from './config';
-import type { IGenerateCoverLetterResponse, IParseVacancyResponse } from './types';
+import type {
+  IGenerateCoverLetterRequestParams,
+  IGenerateCoverLetterResponse,
+  IParseVacancyRequestParams,
+  IParseVacancyRequestResponse,
+} from './types';
 
-export const generateCoverLetterRequest = async (id: string): Promise<IGenerateCoverLetterResponse> => {
+export const generateCoverLetterRequest = async (params: IGenerateCoverLetterRequestParams): Promise<IGenerateCoverLetterResponse> => {
   const { data } = await api.get(`/head-hunter/generate-cover-letter`, {
-    params: { id },
+    params,
   });
 
   return data;
 };
 
-export const parseVacancyRequest = async (id: string): Promise<IParseVacancyResponse> => {
+export const parseVacancyRequest = async (params: IParseVacancyRequestParams): Promise<IParseVacancyRequestResponse> => {
   const { data } = await api.get('/head-hunter/parse-vacancy', {
-    params: { id },
+    params,
   });
 
   return data;

@@ -7,11 +7,12 @@ import { Card } from '@/components/Card/Card';
 import { Result } from './components/Result/Result';
 import { useParseVacancy } from '@/hooks/requests/useParseVacancy';
 import { generateCoverLetterRequest } from '@/api/requests';
-import { getIdFromVacancyLink } from '@/utils/getIdFromVacancyLink';
+import { getInfoFromVacancyLink } from '@/utils/getInfoFromVacancyLink';
 import { useForm } from '@tanstack/react-form';
 import { Loading } from './components/Loading/Loading';
 import { Text } from './components/Text/Text';
 import { normalizeResult } from './normalizeResult';
+import type { IParseVacancyRequestParams } from '@/api/types';
 
 export interface IForm {
   link: string;
@@ -40,10 +41,15 @@ export const MainPage = () => {
       if (result) {
         setResult('');
       }
-      const id = getIdFromVacancyLink(data.link);
-      await parseVacancy.mutateAsync(id);
+      const info = getInfoFromVacancyLink(data.link);
 
-      const { covertLetter } = await generateCoverLetter.mutateAsync(id);
+      if (!info.aggregatorType) {
+        return;
+      }
+
+      const { vacancyId } = await parseVacancy.mutateAsync(info as IParseVacancyRequestParams);
+
+      const { covertLetter } = await generateCoverLetter.mutateAsync({ vacancyId });
       setResult(normalizeResult(covertLetter, data));
     },
   });
@@ -106,10 +112,10 @@ export const MainPage = () => {
               onSubmit: ({ value }) => {
                 if (!value) return 'Введите ссылку на вакансию';
 
-                const isValid = /^https:\/\/hh\.ru\/vacancy\/\d+/.test(value);
+                const info = getInfoFromVacancyLink(value);
 
-                if (!isValid) {
-                  return 'Введите корректную ссылку вида https://hh.ru/vacancy/0000001';
+                if (!info.id || !info.aggregatorType) {
+                  return 'Поддерживаются ссылки hh.ru/vacancy/... и getmatch.com|ru/vacancies/...';
                 }
 
                 return undefined;
