@@ -1,7 +1,22 @@
-export interface IParseVacancyResponse {
-  description: string;
-}
+
 
 export interface IGenerateCoverLetterResponse {
   covertLetter: string;
 }
+
+export const enum E_AGGREGATOR_TYPE {
+  HH = 'HH',
+  GETMATCH = 'GETMATCH',
+}
+
+export interface IParseVacancyRequestParams {
+  id: string;
+  aggregatorType: E_AGGREGATOR_TYPE;
+}
+
+export interface IParseVacancyRequestResponse {
+  vacancyId: string;
+}
+
+export interface IGenerateCoverLetterRequestParams extends IParseVacancyRequestResponse {}
+
