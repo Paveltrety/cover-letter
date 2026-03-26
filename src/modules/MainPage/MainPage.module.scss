@@ -1,12 +1,5 @@
 @use '@/styles/vars' as *;
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
 .input {
   flex: 1;
 }
@@ -18,4 +11,11 @@
   @media (max-width: $md) {
     flex-direction: column;
   }
+}
+
+.linkFieldsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
 }

@@ -1,6 +1,6 @@
-import type { IForm } from './MainPage';
+import type { IUserInfo } from "@/types/common";
 
-export const normalizeResult = (coverLetter: string, data: IForm): string => {
+export const normalizeResult = (coverLetter: string, data: IUserInfo): string => {
   const contacts: string[] = [];
 
   if (data.telegram?.trim()) {

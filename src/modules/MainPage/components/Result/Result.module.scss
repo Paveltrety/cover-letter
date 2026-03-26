@@ -3,21 +3,78 @@
 .root {
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.expanded {
+  & .toogleButton {
+    bottom: 10px;
+    background-color: $white;
+  }
+  & .angleIcon {
+    transition: background-color 0.4s ease;
+    transform: rotate(0);
+  }
+}
+
+.expanded .blurWrapper::after {
+  opacity: 0;
+}
+
+.blurWrapper {
+  position: relative;
+}
+
+.blurWrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 0%, transparent calc(100% - 100px), white 100%);
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.wrapper {
+  display: flex;
   overflow: hidden;
-  transition: max-height 0.4s ease;
+  flex-direction: column;
+  transition: max-height 0.6s ease;
   border: 1px solid #ebebeb;
   border-radius: 12px;
   box-shadow: 0 1px 2px #0000000a;
-  padding: 12px;
+  padding: 52px 12px 12px 12px;
 }
 
 .content {
-  white-space: pre-line;  
+  white-space: pre-line;
   line-height: 24px;
 }
 
 .header {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  z-index: 10;
+
   display: flex;
   justify-content: flex-end;
   margin-bottom: 12px;
+  gap: 12px;
+}
+
+.toogleButton {
+  position: relative;
+  bottom: 5px;
+  width: 40px;
+  margin: 0 auto;
+  border: none;
+  z-index: 2;
+  background-color: transparent;
+  transition: background-color 0.4s ease;
+}
+
+.angleIcon {
+  cursor: pointer;
+  transform: rotate(180deg);
 }

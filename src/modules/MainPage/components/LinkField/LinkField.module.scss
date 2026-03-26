@@ -1,0 +1,21 @@
+@use '@/styles/vars' as *;
+
+.inputWrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.input {
+  flex: 1;
+}
+
+.button {
+  width: auto;
+  padding: 0 12px;
+
+  &.hasError {
+    margin-bottom: 26px;
+  }
+}

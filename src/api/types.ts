@@ -1,7 +1,7 @@
 
 
 export interface IGenerateCoverLetterResponse {
-  covertLetter: string;
+  coverLetter: string;
 }
 
 export const enum E_AGGREGATOR_TYPE {

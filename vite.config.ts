@@ -4,7 +4,6 @@ import { tanstackRouter } from '@tanstack/router-plugin/vite';
 import path from 'path';
 import svgr from 'vite-plugin-svgr';
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     tanstackRouter({
@@ -15,7 +14,7 @@ export default defineConfig({
     svgr({
       include: '**/*.svg',
       svgrOptions: {
-        exportType: 'default', // ⭐ ВАЖНО
+        exportType: 'default',
       },
     }),
   ],
