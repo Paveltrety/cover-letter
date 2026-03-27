@@ -5,7 +5,6 @@ import { useCoverLetterRequest } from '../../useCoverLetterRequest';
 import { Loading } from '../Loading/Loading';
 import { Result } from '../Result/Result';
 import styles from './LinkField.module.scss';
-import { Toaster } from '@/components/ui/Toaster';
 import { getInfoFromVacancyLink } from '@/utils/getInfoFromVacancyLink';
 import { useUpdateEffect } from 'react-use';
 import { normalizeResult } from './normalizeResult';
@@ -36,7 +35,7 @@ const LinkFieldInner = ({ userInfoRef }: ILinkFieldProps) => {
 
     const info = getInfoFromVacancyLink(linkValue);
     if (!info.id || !info.aggregatorType) {
-      Toaster.error('Поддерживаются ссылки hh.ru/vacancy/... и getmatch.com/...');
+      setError('Поддерживаются ссылки hh.ru/vacancy/, getmatch.com/ или zarplata.ru/vacancy/');
       return;
     }
 

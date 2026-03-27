@@ -11,7 +11,7 @@ export const Text = () => {
       </span>
       <br />
       <span className={styles.description}>
-        Поддерживаются вакансию с <b>hh.ru</b> и <b>getmatch</b>
+        Поддерживаются работа с сервисами: <b>hh.ru</b>, <b>getmatch</b>, <b>Зарплата.ру</b>
       </span>
     </div>
   );

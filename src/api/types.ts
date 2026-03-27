@@ -7,6 +7,7 @@ export interface IGenerateCoverLetterResponse {
 export const enum E_AGGREGATOR_TYPE {
   HH = 'HH',
   GETMATCH = 'GETMATCH',
+  ZARPLATA = 'ZARPLATA',
 }
 
 export interface IParseVacancyRequestParams {

@@ -13,4 +13,4 @@ const getInstanceApi = (url?: string) => {
 };
 
 export const api = getInstanceApi('https://paveltrety.ru/api');
- // export const api = getInstanceApi('http://localhost:5002/api');
+// export const api = getInstanceApi('http://localhost:5002/api');

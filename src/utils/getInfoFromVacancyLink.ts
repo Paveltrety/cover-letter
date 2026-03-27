@@ -34,6 +34,15 @@ export const getInfoFromVacancyLink = (link: string): IInfoFromVacancyLink => {
       };
     }
 
+    // ZARPLATA
+    if (hostname.includes('zarplata.ru') && /^\/vacancy\/\d+/.test(pathname)) {
+      const match = pathname.match(/\/vacancy\/(\d+)/);
+      return {
+        id: match?.[1] ?? '',
+        aggregatorType: E_AGGREGATOR_TYPE.ZARPLATA,
+      };
+    }
+
     return { id: '', aggregatorType: null };
   } catch {
     return { id: '', aggregatorType: null };
